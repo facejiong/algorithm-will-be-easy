@@ -3,19 +3,8 @@
 var assert = require('assert');
 var AlgorithmWillBeEasy = require('./algorithm-will-be-easy');
 
-
 (function() {
-  var list = new AlgorithmWillBeEasy.List();
-
-  list.push(1);
-  list.unshift(2);
-
-  assert.equal(list.get(1), 1);
-  assert.equal(list.get(0), 2);
-
-  assert.equal(list.shift(), 2);
-  assert.equal(list.get(0), 1);
-
-  assert.equal(list.pop(), 1);
-  assert.equal(list.get(0), undefined);
+  var Search = new AlgorithmWillBeEasy.Search();
+  assert.equal(Search.linearSearch([1,2,3,5,6,8,9,12],5), 3, 'linearSearch is ok');
+  assert.equal(Search.binarySearch([1,2,3,5,6,8,9,12],6), 4, 'binarySearch is ok');
 }());
