@@ -1,7 +1,8 @@
 'use strict';
 
 class Search {
-
+  // 线性查找 
+  // O(N)
   linearSearch(array, x) {
     var length = array.length;
     for (var i = 0; i < length; i++) {
@@ -11,7 +12,8 @@ class Search {
     }
     return false;
   }
-
+  // 二分查找
+  // O(logN)
   binarySearch(array, x) {
     var low = 0, high = array.length - 1;
     while (low <= high) {
@@ -30,8 +32,29 @@ class Search {
   }
 
 }
+class Sort {
+
+  // 冒泡排序
+  // O(n^2)
+  bubbleSort(array) {
+    var d = '';
+    var length = array.length;
+    for (var i=0; i < length; i++) {
+        for (var j = 0; j < length; j++) {
+            if (array[i] < array[j]) {
+                d = array[j];
+                array[j] = array[i];
+                array[i] = d;
+            }
+        }
+    }
+    console.dir(array)
+    return array;
+  }
+}
  
 
 module.exports = {
   Search: Search,
+  Sort: Sort,
 };
