@@ -40,15 +40,14 @@ class Sort {
     var d = '';
     var length = array.length;
     for (var i=0; i < length; i++) {
-        for (var j = 0; j < length; j++) {
-            if (array[i] < array[j]) {
-                d = array[j];
-                array[j] = array[i];
-                array[i] = d;
-            }
+      for (var j = 0; j < length; j++) {
+        if (array[i] < array[j]) {
+          d = array[j];
+          array[j] = array[i];
+          array[i] = d;
         }
+      }
     }
-    console.dir(array)
     return array;
   }
 }
