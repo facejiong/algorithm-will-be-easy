@@ -1,6 +1,7 @@
 // 二叉树查找，增加，删除快
 function  Node(data, left, right) {
   this.data = data;
+  this.count = 1;
   this.left = left;
   this.right = right;
   this.show = show;
@@ -19,6 +20,8 @@ function BST() {
   this.getMin = getMin;
   this.getMax = getMax;
   this.find = find;
+  this.update = update;
+  this.remove = remove;
 }
 
 function insert(data) {
@@ -103,6 +106,51 @@ function find(data) {
   }
   return null;
 }
+
+function remove(data) {
+  root = removeNode(this.root, data);
+}
+
+function removeNode(node, data) {
+  if (node == null) {
+    return null;
+  }
+  if (data == node.data) {
+    if (node.left == null && node.right == null) {
+      return null;
+    }
+    if (node.left == null) {
+      return node.right;
+    }
+    if (node.right == null) {
+      return node.left;
+    }
+    var tempNode = getSmallest(node.right);
+    node.data = tempNode.data;
+    node.right = removeNode(node.right, tempNode.data);
+    return node;
+  } else if (data < node.data) {
+    node.left = removeNode(node.left, data);
+    return node;
+  } else {
+    node.right = removeNode(node.right, data);
+    return node;
+  }
+}
+
+function getSmallest(root) {
+  var current = root;
+  while (!(current.left == null)) {
+    current = current.left;
+  }
+  return current.data;
+}
+
+function update(data) {
+  var grade = this.find(data);
+  grade.count ++;
+  return grade;
+}
 var nums = new BST();
 nums.insert(2);
 nums.insert(22);
@@ -122,3 +170,12 @@ postOrder(nums.root)
 console.log('min=' + nums.getMin())
 console.log('max=' + nums.getMax())
 console.log('find:' + nums.find(2).data)
+// add节点 count
+nums.update(2);
+nums.update(2);
+console.log('count:' + nums.find(2).count)
+
+nums.remove(12);
+console.log('中序')
+inOrder(nums.root)
+
