@@ -15,8 +15,7 @@ function List() {
   this.length = length;
   this.currPos = currPos;
   this.moveTo = moveTo;
-  this.getElement = getEleme
-  this.length = length;
+  this.getElement = getElement;
   this.contains = contains;
 }
 
@@ -44,7 +43,7 @@ function remove(el) {
 }
 
 function length() {
-  return listSize;
+  return this.listSize;
 }
 
 function toString() {
@@ -59,4 +58,67 @@ function insert(el, after) {
     return true;
   }
   return false;
+}
+
+function clear() {
+  delete this.dataStore;
+  this.dataStore = [];
+  this.listSize = this.pos = 0;
+}
+
+function contains(el) {
+  for (var i = 0; i < this.dataStore.length; ++i) {
+    if (this.dataStore[i] == el) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function front() {
+  this.pos = 0;
+}
+
+function end() {
+  this.pos = this.listSize - 1;
+}
+
+function prev() {
+  if (this.pos > 0) {
+    -- this.pos;
+  }
+}
+
+function next() {
+  if (this.pos < this.listSize - 1) {
+    ++ this.pos;
+  }
+}
+
+function currPos() {
+  return this.pos;
+}
+
+function moveTo(position) {
+  this.pos = position;
+}
+
+function getElement() {
+  return this.dataStore[this.pos];
+}
+
+var names = new List();
+names.append('li');
+names.append('wan');
+names.append('liu');
+names.append('zhang');
+names.next();
+console.log(names.getElement());
+names.prev();
+console.log(names.getElement());
+names.moveTo(3);
+console.log(names.getElement());
+
+for(names.front(); names.currPos() < names.length(); names.next()) {
+  console.log(names.getElement());
 }
