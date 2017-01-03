@@ -1,7 +1,7 @@
 'use strict';
 
 class Search {
-  // 线性查找 
+  // 线性查找
   // O(N)
   linearSearch(array, x) {
     var length = array.length;
@@ -47,7 +47,8 @@ class Search {
  *     桶排序         O(n + k)            O(n + k)       O(n + k)       O(n + k)      YES     外
  *     基数排序O(N!)  O(n * k)            O(n * k)       O(n * k)       O(n + k)      YES     外
  *
- */ 
+ * 插入 > 选择 > 冒泡
+ */
 
 class Sort {
   // 冒泡排序
@@ -55,8 +56,8 @@ class Sort {
     var length = array.length;
     for(var i = 0; i < length-1; i++) {
       for(var j = 0; j < length - 1 - i; j++) {
-        if(array[j] > array[j+1]) {       
-          var temp = array[j+1];        
+        if(array[j] > array[j+1]) {
+          var temp = array[j+1];
           array[j+1] = array[j];
           array[j] = temp;
         }
@@ -145,7 +146,7 @@ class Sort {
 
 }
 
- 
+
 
 module.exports = {
   Search: Search,
