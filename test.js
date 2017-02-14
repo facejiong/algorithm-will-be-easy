@@ -9,16 +9,21 @@ for(var i = 0; i <= 100; i++){
 
 (function() {
   var Sort = new AlgorithmWillBeEasy.Sort();
-  console.time("bubbleSort");
-  Sort.bubbleSort(randomData)
-  // console.dir(Sort.bubbleSort(randomData))
-  console.timeEnd("bubbleSort");
-  console.time("selectionSort");
-  Sort.selectionSort(randomData)
-  // console.dir(Sort.selectionSort(randomData))
-  console.timeEnd("selectionSort");
-  console.time("insertionSort");
-  Sort.insertionSort(randomData)
-  // console.dir(Sort.insertionSort(randomData))
-  console.timeEnd("insertionSort");
-}());
+  console.log(Sort.mergeSort(randomData))
+})();
+
+// (function() {
+//   var Sort = new AlgorithmWillBeEasy.Sort();
+//   console.time("bubbleSort");
+//   Sort.bubbleSort(randomData)
+//   // console.dir(Sort.bubbleSort(randomData))
+//   console.timeEnd("bubbleSort");
+//   console.time("selectionSort");
+//   Sort.selectionSort(randomData)
+//   // console.dir(Sort.selectionSort(randomData))
+//   console.timeEnd("selectionSort");
+//   console.time("insertionSort");
+//   Sort.insertionSort(randomData)
+//   // console.dir(Sort.insertionSort(randomData))
+//   console.timeEnd("insertionSort");
+// }());

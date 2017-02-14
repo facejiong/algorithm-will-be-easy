@@ -68,28 +68,32 @@ class Sort {
   // 选择排序
   selectionSort(array) {
     var length = array.length;
+    var minIndex, temp;
     for (var i=0; i < length-1; i++) {
+      minIndex = i;
       for (var j = i + 1; j < length-1; j++) {
-        if (array[i] > array[j]) {
-          var temp = array[j];
-          array[j] = array[i];
-          array[i] = temp;
+        if (array[minIndex] > array[j]) {
+          minIndex = j;
         }
       }
+      var temp = array[i];
+      array[i] = array[minIndex];
+      array[minIndex] = temp;
     }
     return array;
   }
   // 插入排序
   insertionSort(array) {
-    var length = array.length
+    var length = array.length;
+    var preIndex, current;
     for(var i = 1; i < length; i++) {
-      var temp = array[i];
-      var j = i - 1;
-      while(j >= 0 && array[j] > temp) {
-        array[j+1] = array[j];
-        j--;
+      current = array[i];
+      preIndex = i - 1;
+      while(preIndex >= 0 && array[preIndex] > current) {
+        array[preIndex+1] = array[preIndex];
+        preIndex--;
       }
-      array[j+1] = temp;
+      array[preIndex+1] = current;
     }
     return array;
   }
@@ -116,16 +120,14 @@ class Sort {
   }
   // 归并排序 分治法  2-路归并
   mergeSort(array) {  //采用自上而下的递归方法
-    var length = arr.length;
+    var length = array.length;
     if(length < 2) {
       return array;
     }
     var middle = Math.floor(length / 2),
         left = array.slice(0, middle),
-        right = arr.slice(middle);
-        return
-        merge(mergeSort(left),
-        mergeSort(right));
+        right = array.slice(middle);
+    return this.merge(this.mergeSort(left), this.mergeSort(right));
   }
   merge(left, right){
     var result = [];
@@ -138,8 +140,7 @@ class Sort {
     }
     while(left.length)
       result.push(left.shift());
-    while
-      (right.length)
+    while(right.length)
       result.push(right.shift());
     return result;
   }
